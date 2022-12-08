@@ -1,56 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/basic_widgets/data_table/my_data_table.dart';
-import 'package:flutterproject/basic_widgets/dialog/my_dialog.dart';
-import 'package:flutterproject/basic_widgets/grid_view/my_grid_view.dart';
-import 'package:flutterproject/basic_widgets/list_view/my_list_view.dart';
-import 'package:flutterproject/basic_widgets/menu/my_menu.dart';
-import 'package:flutterproject/basic_widgets/text_form_field/my_textFormField.dart';
-import 'package:flutterproject/basic_widgets/toast/my_toast.dart';
+import 'package:flutterproject/my_routes/my_routes.dart';
 
 import 'basic_widgets/list_view/product.dart';
 import 'entities/contact.dart';
 import 'main2.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Demo Section"),
-          // actions: [
-          //   PopupMenuButton(
-          //     itemBuilder: (context) => [
-          //       const PopupMenuItem(
-          //         value: 1,
-          //         child: ListTile(
-          //           leading: Icon(Icons.save),
-          //           title: Text("Menu 1"),
-          //         ),
-          //       ),
-          //       const PopupMenuItem(
-          //         child: Text("Menu 2"),
-          //         value: 2,
-          //       ),
-          //       const PopupMenuItem(
-          //         child: Text("Menu 3"),
-          //         value: 3,
-          //       ),
-          //     ],
-          //     onSelected: (int menu) {
-          //       print(menu);
-          //     },
-          //   ),
-          // ],
-        ),
-        body: const MyFeild(),
-      ),
+      home: MyHomePage(),
     );
   }
 }

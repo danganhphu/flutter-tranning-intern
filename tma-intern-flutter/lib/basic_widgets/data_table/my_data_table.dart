@@ -5,7 +5,7 @@ import '../../entities/news.dart';
 
 class MyDataTable extends StatefulWidget {
   const MyDataTable({Key? key}) : super(key: key);
-
+  final String title = "DataTable";
   @override
   State<MyDataTable> createState() => _MyDataTableState();
 }
@@ -32,53 +32,59 @@ class _MyDataTableState extends State<MyDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return DataTable(
-      columns: const [
-        DataColumn(
-          label: Text("Name"),
-        ),
-        DataColumn(
-          label: Text("photo"),
-        ),
-        DataColumn(
-          label: Text("Description"),
-        ),
-        DataColumn(
-          label: Text("Price"),
-        ),
-      ],
-      rows: mobiles.map((mobile) => DataRow(
-        cells: [
-          DataCell(
-              Text(mobile.name),
-            onTap: () {
-                print(mobile.name);
-            }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: DataTable(
+        columns: const [
+          DataColumn(
+            label: Text("Name"),
           ),
-          DataCell(
-              Image.asset(
-                "assets/images/${mobile.photo}",
-                width: 40,
-                height: 40,
+          DataColumn(
+            label: Text("photo"),
+          ),
+          DataColumn(
+            label: Text("Description"),
+          ),
+          DataColumn(
+            label: Text("Price"),
+          ),
+        ],
+        rows: mobiles.map((mobile) => DataRow(
+            cells: [
+              DataCell(
+                  Text(mobile.name),
+                  onTap: () {
+                    print(mobile.name);
+                  }
               ),
-              onTap: () {
-                print(mobile.photo);
-              }
-          ),
-          DataCell(
-              Text(mobile.description),
-              onTap: () {
-                print(mobile.description);
-              }
-          ),
-          DataCell(
-              Text(mobile.price.toString()),
-              onTap: () {
-                print(mobile.price );
-              }
-          ),
-        ]
-      )).toList(),
+              DataCell(
+                  Image.asset(
+                    "assets/images/${mobile.photo}",
+                    width: 40,
+                    height: 40,
+                  ),
+                  onTap: () {
+                    print(mobile.photo);
+                  }
+              ),
+              DataCell(
+                  Text(mobile.description),
+                  onTap: () {
+                    print(mobile.description);
+                  }
+              ),
+              DataCell(
+                  Text(mobile.price.toString()),
+                  onTap: () {
+                    print(mobile.price );
+                  }
+              ),
+            ]
+        )).toList(),
+      ),
     );
   }
 }

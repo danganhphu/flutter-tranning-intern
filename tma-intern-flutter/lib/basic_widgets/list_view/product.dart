@@ -4,14 +4,13 @@ import '../../entities/news.dart';
 
 class MyProduct extends StatefulWidget {
   const MyProduct({Key? key}) : super(key: key);
-
+  final String title = "Product";
   @override
   State<MyProduct> createState() => _MyProductState();
 }
 
 class _MyProductState extends State<MyProduct> {
   List<News> news = [];
-
   @override
   void initState() {
     super.initState();
@@ -40,25 +39,31 @@ class _MyProductState extends State<MyProduct> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child:  ListView.separated(
-        itemCount: news.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              leading: Image.asset("assets/images/${news[index].photo}"),
-              title: Text(news[index].title),
-              subtitle: Text(news[index].description),
-              onTap: () {
-                print(news[index].title);
-              },
-            ),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(5),
+        child:  ListView.separated(
+          itemCount: news.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                leading: Image.asset("assets/images/${news[index].photo}"),
+                title: Text(news[index].title),
+                subtitle: Text(news[index].description),
+                onTap: () {
+                  print(news[index].title);
+                },
+              ),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider();
+          },
+        ),
       ),
     );
   }

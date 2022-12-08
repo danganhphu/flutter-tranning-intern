@@ -31,37 +31,43 @@ class _MyGridViewState extends State<MyGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: EdgeInsets.all(5),
-      itemCount: mobiles.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          child: Card(
-            child: Column(
-              children: [
-                Image.asset(
-                  "assets/images/${mobiles[index].photo}",
-                  width: 70,
-                  height: 70,
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(3),
-                ),
-                Text(mobiles[index].name),
-                const Padding(
-                  padding: EdgeInsets.all(3),
-                ),
-                Text(mobiles[index].description),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: GridView.builder(
+        padding: const EdgeInsets.all(5),
+        itemCount: mobiles.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            child: Card(
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/images/${mobiles[index].photo}",
+                    width: 70,
+                    height: 70,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(3),
+                  ),
+                  Text(mobiles[index].name),
+                  const Padding(
+                    padding: EdgeInsets.all(3),
+                  ),
+                  Text(mobiles[index].description),
+                ],
+              ),
             ),
-          ),
-          onTap: () {
-            print(mobiles[index].name);
-          },
-        );
+            onTap: () {
+              print(mobiles[index].name);
+            },
+          );
 
-      },
+        },
+      ),
     );
   }
 }

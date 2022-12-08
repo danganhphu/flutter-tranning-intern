@@ -6,17 +6,23 @@ class MyToast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(onSurface: Colors.lightBlue),
-      onPressed: () {
-        Fluttertoast.showToast(
-            msg: "Short Toast",
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0
-        );
-      },
-      child: Text('Click me!!'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Toast"),
+        centerTitle: true,
+      ),
+      body: ElevatedButton(
+        style: ElevatedButton.styleFrom(onSurface: Colors.lightBlue),
+        onPressed: () {
+          Fluttertoast.showToast(
+              msg: "Short Toast",
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0
+          );
+        },
+        child: Text('Click me!!'),
+      ),
     );
   }
 }
