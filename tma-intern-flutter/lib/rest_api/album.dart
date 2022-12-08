@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 
 import '../entities/album.dart';
 
-
 //lấy dữ liệu từ REST API
 Future<List<Album>> fetchAlbum() async {
   final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums'));
