@@ -7,7 +7,7 @@ import 'package:flutterproject/basic_widgets/toast/my_toast.dart';
 import 'package:flutterproject/provider_state/main_page.dart';
 import '../basic_widgets/dialog/my_dialog.dart';
 import '../basic_widgets/grid_view/my_grid_view.dart';
-import '../rest_api/album.dart';
+import '../album/album_page.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
