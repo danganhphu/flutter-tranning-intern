@@ -12,7 +12,10 @@ class MainPageProduct extends StatelessWidget {
     currentContext = context;
     return ChangeNotifierProvider(
       create: (context) => ListProduct(),
-      child: const ProductPage(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: ProductPage(),
+      ),
     );
   }
 }

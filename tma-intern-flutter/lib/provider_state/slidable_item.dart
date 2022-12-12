@@ -6,7 +6,7 @@ import 'alert_dialog.dart';
 import 'function_page.dart';
 
 class Myslidable extends StatelessWidget {
-  final Product? product;
+  final Product product;
   final BuildContext currentContext;
   const Myslidable({Key? key, required this.product, required this.currentContext}) : super(key: key);
 
@@ -23,7 +23,7 @@ class Myslidable extends StatelessWidget {
             onPressed: (context) async {
               String choose = await showMyDialog(context);
               if (choose == 'ok') {
-                Provider.of<ListProduct>(currentContext, listen: false).remove(product!);
+                Provider.of<ListProduct>(currentContext, listen: false).remove(product);
                 ScaffoldMessenger.of(currentContext).showSnackBar(
                     const SnackBar(content: Text('Xóa thành công')
                     ),
@@ -85,14 +85,14 @@ class Myslidable extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(product!.name),
-                    Text(product!.description),
+                    Text(product.name),
+                    Text(product.description),
                   ],
                 ),
               ),
               Expanded(
                 child: Text(
-                  product!.price.toInt().toString(),
+                  product.price.toInt().toString(),
                 ),
               ),
             ],

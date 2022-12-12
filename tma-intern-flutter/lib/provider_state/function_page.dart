@@ -21,7 +21,7 @@ class _FunctionPageState extends State<FunctionPage> {
 
   @override
   Widget build(BuildContext context) {
-    //Get.lazyPut(() => DataClass());
+
     if (widget.product != null) {
       name.text = widget.product!.name;
       price.text = widget.product!.price.toString();
@@ -69,12 +69,10 @@ class _FunctionPageState extends State<FunctionPage> {
                         );
                         if (widget.function == 'add') {
                           Provider.of<ListProduct>(context, listen: false).add(product);
-                          // context.read<ListProduct>().add(product);
                         } else {
                           Provider.of<ListProduct>(context, listen: false).update(widget.product!, product);
                         }
                         if (Navigator.canPop(context)) {
-                          print('oke');
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
