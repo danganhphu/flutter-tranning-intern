@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutterproject/pokemon/extension/extension_String.dart';
+import 'package:provider/provider.dart';
 
-class PokeListPage extends StatelessWidget {
+import '../api_provider/api_pokemon.dart';
+import '../models/pokemon.dart';
+import 'Type.dart';
+
+class PokeListPage extends StatefulWidget {
   const PokeListPage({Key? key}) : super(key: key);
 
   @override
+  State<PokeListPage> createState() => _PokeListPageState();
+}
+
+class _PokeListPageState extends State<PokeListPage> {
+
+  @override
   Widget build(BuildContext context) {
+    PokemonAPI apiProvider = Provider.of<PokemonAPI>(context);
+    Pokemon? pokemon = apiProvider.selectedPokemon;
+
+    final List<String> types =
+    pokemon!.types.map((Type e) => e.type.name.toUpperCase()).toList();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Pokédex", style: TextStyle(color: Colors.black)),
@@ -104,37 +121,53 @@ class PokeListPage extends StatelessWidget {
             )
         ),
       ),
-      body: Card(
+      body: Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 8,
+        ),
         child: ListTile(
+          tileColor: const Color.fromRGBO(255, 255, 255, 0.5),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(10),
             ),
           ),
-          onTap: () {
-          },
-          title: const Text(
-            'Bulbasaur',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                pokemon.name.toTitleCase(),
+                style: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              Text(pokemon.orderNumber),
+            ],
           ),
           subtitle: Row(
-              children: const [
-                Text('oke')
-              ]
+            children:
+            types.map((String e) => Expanded(child: TypeBadge(e))).toList(),
           ),
           trailing: Container(
-
-            child:
-            Image.asset("assets/images/thumb2.png"),
+            decoration: const BoxDecoration(
+              color: Color.fromRGBO(255, 255, 255, 0.5),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                bottomLeft: Radius.circular(20.0),
+              ),
+            ),
+            child: Image.network(
+              pokemon.sprites.other.officialArtwork.frontDefault,
+            ),
           ),
         ),
       ),
 
 
-      drawer: const Drawer(),
+      drawer: const Drawer(
+        backgroundColor: Colors.orange,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
         },
@@ -145,5 +178,6 @@ class PokeListPage extends StatelessWidget {
       ),
     );
   }
-
 }
+
+
