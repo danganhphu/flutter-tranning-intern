@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 import 'package:flutterproject/provider_state/slidable_item.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +60,7 @@ class _ProductPageState extends State<ProductPage> {
                 separatorBuilder: (BuildContext context, int index) =>
                 const Divider(
                   thickness: 1,
-                  height: 1,
+                  height: 8,
                 ),
                 itemCount: listProduct.list.length);
           },

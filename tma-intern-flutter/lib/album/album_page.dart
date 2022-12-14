@@ -14,11 +14,20 @@ class AlbumPage extends StatefulWidget {
 class _AlbumPageState extends State<AlbumPage> {
   late Future<List<Album>> albums;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   albums = fetchAlbum();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    print(1);
+   var albums = AlbumRestAPI().fetchAlbum();
+
+   // try {
+   //   var albums = AlbumRestAPI().fetchAlbum();
+   // }catch (err) {
+   //
+   // }
+
+   print(2);
+  }
 
   @override
   Widget build(BuildContext context) {

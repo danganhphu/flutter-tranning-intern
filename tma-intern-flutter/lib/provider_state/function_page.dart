@@ -42,17 +42,14 @@ class _FunctionPageState extends State<FunctionPage> {
           MyTextField(
             controller: name,
             labelText: 'Tên sản phẩm',
-            readOnly: (widget.function == 'see')
           ),
           MyTextField(
               controller: description,
               labelText: 'Mô tả',
-              readOnly: (widget.function == 'see')
           ),
           MyTextField(
               controller: price,
               labelText: 'Giá',
-              readOnly: (widget.function == 'see')
           ),
           if (widget.function != 'see')
             Row(
@@ -97,9 +94,8 @@ class _FunctionPageState extends State<FunctionPage> {
 class MyTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
-  final bool readOnly;
 
-  const MyTextField({Key? key, required this.controller, required this.labelText, required this.readOnly}) : super(key: key);
+  const MyTextField({Key? key, required this.controller, required this.labelText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

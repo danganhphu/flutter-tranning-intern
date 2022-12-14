@@ -30,6 +30,28 @@ class _MyGridViewState extends State<MyGridView> {
   }
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +61,8 @@ class _MyGridViewState extends State<MyGridView> {
       body: GridView.builder(
         padding: const EdgeInsets.all(5),
         itemCount: mobiles.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 1.0,
+            mainAxisSpacing: 10.0 ),
         itemBuilder: (context, index) {
           return GestureDetector(
             child: Card(
