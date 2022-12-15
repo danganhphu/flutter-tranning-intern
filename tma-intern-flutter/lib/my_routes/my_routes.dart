@@ -8,6 +8,7 @@ import 'package:flutterproject/provider_state/main_page.dart';
 import '../basic_widgets/dialog/my_dialog.dart';
 import '../basic_widgets/grid_view/my_grid_view.dart';
 import '../album/album_page.dart';
+import '../pokedex_demo/screen/page_poke.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -54,7 +55,9 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 5),
             builButton(context, title: "Product CRUD", description: const MainPageProduct()),
             const SizedBox(height: 5),
-            builButton(context, title: "REST API", description: const AlbumPage())
+            builButton(context, title: "REST API", description: const AlbumPage()),
+            const SizedBox(height: 5),
+            builButton(context, title: "REST API poke", description: const PokePage())
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterproject/my_routes/my_routes.dart';
+import 'package:flutterproject/pokedex_demo/screen/index_pokemon.dart';
 
-import 'basic_widgets/list_view/product.dart';
 import 'entities/contact.dart';
 import 'main2.dart';
 
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: PokeListPage(),
     );
   }
 }
