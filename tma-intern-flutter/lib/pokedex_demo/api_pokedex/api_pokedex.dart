@@ -8,8 +8,7 @@ class PokedexAPI {
   String url = 'https://gist.githubusercontent.com/hungps/0bfdd96d3ab9ee20c2e572e47c6834c7/raw/pokemons.json';
 
   //lấy dữ liệu từ REST API
-  Future<List<Pokemon>> fetchPhokemon() async {
-    print('ba');
+  Future<List<Pokemon>> fetchPokemon() async {
     final response = await http.get(Uri.parse(url));
     List<Pokemon> pokemons = [];
     if (response.statusCode == 200) {

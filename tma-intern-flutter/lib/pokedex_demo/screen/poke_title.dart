@@ -3,14 +3,14 @@ import 'type.dart';
 import '../models/pokemon.dart';
 
 class PokemonTile extends StatelessWidget {
-  const PokemonTile({Key? key, required this.index, required this.pokemon}): super(key: key);
+  const PokemonTile({Key? key, required this.index, required this.pokemon})
+      : super(key: key);
 
   final int index;
   final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
-
     final String titleText = '${pokemon.id}       ${pokemon.name}';
     // final textColor = pokemon.averageColor.computeLuminance() > 0.35
     //     ? Colors.black
@@ -19,14 +19,13 @@ class PokemonTile extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       child: ListTile(
-        tileColor: Colors.brown,
+        tileColor: Color(0xFF62B6B7),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
         ),
-        onTap: () {
-        },
+        onTap: () {},
         title: Text(
           titleText,
           style: TextStyle(
@@ -35,8 +34,9 @@ class PokemonTile extends StatelessWidget {
           ),
         ),
         subtitle: Row(
-          children:
-          pokemon.typeofpokemon.map((String type) => Expanded(child: TypeBadge(type))).toList(),
+          children: pokemon.typeofpokemon
+              .map((String type) => Expanded(child: TypeBadge(type)))
+              .toList(),
         ),
         trailing: Container(
           decoration: BoxDecoration(
@@ -46,8 +46,7 @@ class PokemonTile extends StatelessWidget {
               bottomLeft: Radius.circular(20.0),
             ),
           ),
-          child:
-          Image.network(pokemon.imageurl),
+          child: Image.network(pokemon.imageurl),
         ),
       ),
     );

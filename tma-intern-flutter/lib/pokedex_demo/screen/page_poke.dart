@@ -39,7 +39,7 @@ class _PokePageState extends State<PokePage> {
       ),
       //widget future
       body: FutureBuilder<List<Pokemon>>(
-          future: pokeAPI.fetchPhokemon(),
+          future: pokeAPI.fetchPokemon(),
           builder: (context, AsyncSnapshot snapshot) {
             if (snapshot.hasError) {
               print(snapshot.error.toString());

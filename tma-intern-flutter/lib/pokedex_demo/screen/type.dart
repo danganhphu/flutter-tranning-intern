@@ -12,7 +12,7 @@ class TypeBadge extends StatelessWidget {
       width: double.infinity,
       child: Container(
         decoration: BoxDecoration(
-          // color: Color.fromRGBO(255, 255, 255, 0.5),
+          color: Color.fromARGB(226, 245, 245, 245),
           borderRadius: BorderRadius.all(
             Radius.circular(10.0),
           ),
@@ -27,9 +27,7 @@ class TypeBadge extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
         ),
       ),
