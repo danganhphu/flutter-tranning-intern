@@ -6,37 +6,46 @@ import '../utils/average_color.dart';
 import '../models/pokemon.dart';
 
 class PokemonApi {
+  static const _BASE_URL = 'https://pokeapi.co/api/v2';
+  String url = '${_BASE_URL}/pokemon?limit=100&offset=0';
 
   Future<List<Pokemon>> getAllPokemon() async {
-    var url = Uri.parse('https://pokeapi.co/api/v2/pokemon');
-    var response = await http.get(url);
-    List<Pokemon> pokemons = [];
 
-    if (response.statusCode == 200) {
-      var json = jsonDecode(response.body);
+    try {
+      var urlApi = Uri.parse(url);
+      final response = await http.get(urlApi);
+      List<Pokemon> pokemons = [];
 
-      for (var item in json['results']) {
-        if (item['url'] != null) {
-          var pokemon = await getPokemon(item['url']);
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body);
 
-          final colors = await Future.wait(pokemons.map(
-                  (Pokemon e) async => await getImagePalette(NetworkImage(e.urlImage!))
-          ));
+        for (var item in json['results']) {
+          if (item['url'] != null) {
+            final pokemon = await getPokemon(item['url']);
 
-          for (Color i in colors) {
-            pokemon.averageColor = i;
+            final colors = await Future.wait(pokemons.map(
+                    (Pokemon e) async => await getImagePalette(NetworkImage(e.urlImage!))
+            ));
+
+            for (Color i in colors) {
+              pokemon.averageColor = i;
+            }
+            pokemons.add(pokemon);
+          } else {
+            print('Không có dữ liệu');
           }
-          pokemons.add(pokemon);
-        } else {
-          print('Không có dữ liệu');
         }
+      } else {
+        return Future.error("Opp, something went wrong");
       }
-    } else {
-      return Future.error("Opp, something went wrong");
+
+      return pokemons;
+    } catch (error) {
+      throw Exception(error.toString());
     }
 
-    return pokemons;
   }
+
 
   Future<Pokemon> getPokemon(String url) async {
     try {

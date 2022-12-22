@@ -7,13 +7,11 @@ void main() {
 
 void getResultAPI() async {
   const _BASE_URL = 'https://pokeapi.co/api/v2';
-  var url = Uri.parse('${_BASE_URL}/pokemon?limit=100&offset=0');
+  var url = Uri.parse('${_BASE_URL}/pokemon');
   var response = await http.get(url);
 
   if (response.statusCode == 200) {
     var json = jsonDecode(response.body);
-    // print("response :${json['results'].length}");
-    url = Uri.parse(json['next']);
     for (var item in json['results']) {
       if (item['url'] != null) {
         var pokemon = await getPokemon(item['url']);
@@ -33,8 +31,6 @@ Future<Pokemon> getPokemon(String url) async {
   var response = await http.get(Uri.parse(url));
 
   if (response.statusCode == 200) {
-    // print(jsonDecode(response.body));
-    var body = jsonDecode(response.body);
     return Pokemon.fromJson(jsonDecode(response.body));
   } else {
     return Future.error('fail');

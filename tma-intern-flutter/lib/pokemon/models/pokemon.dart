@@ -1,12 +1,11 @@
-
 import 'dart:ui';
 
 class Pokemon {
-  int? id;
-  String? name;
-  String? urlImage;
-  List<String>? types;
-  Color averageColor = Color(0XFFE26717);
+  final int? id;
+  final String? name;
+  final String? urlImage;
+  final List<String>? types;
+  Color averageColor = const Color(0xFF4FC1A6);
 
   Pokemon({this.id, this.name, this.urlImage, this.types});
 

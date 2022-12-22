@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
-import '../utils/string_extension.dart';
 
-import '../models/pokemon.dart';
+import '../widgets/types.dart';
+import '../utils/extensions.dart';
+import '../models/pokemon_models.dart';
 
 class PokeList extends StatelessWidget {
   List<Pokemon> pokemons;
-  PokeList({Key? key, required this.pokemons,}) : super(key: key);
+  PokeList({Key? key, required this.pokemons}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return ListView.builder(
         itemCount: pokemons.length,
         itemBuilder: (context, index) {
           final poke = pokemons[index];
-          final Color textColor;
-          if (poke.averageColor.computeLuminance() > 0.35) {
-            textColor = Colors.black;
-          } else {
-            textColor = Colors.white;
-          }
+          final String titleText =
+              '${poke.idNumber}    ${poke.name!.toTitleCase()}';
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
             child: ListTile(
-              tileColor: poke.averageColor,
+              contentPadding: const EdgeInsets.only(right: 0.0),
+              tileColor: poke.averageColor.withOpacity(0.9),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
@@ -31,18 +28,30 @@ class PokeList extends StatelessWidget {
               ),
               onTap: () {
               },
-              title: Text(
-                '${poke.idNumber} ${poke.name!.toTitleCase()}',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
+              title: Container(
+                margin: const EdgeInsets.fromLTRB(8.0, 0, 11.0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      titleText,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0XFF393E46),
+                      ),
+                    ),
+                    Row(
+                      children: const [
+                        Icon(Icons.star),
+                        SizedBox(width: 10),
+                        Icon(Icons.circle_outlined)
+                      ],
+                    ),
+                  ],
                 ),
               ),
               subtitle: Row(
-                children: const [
-                  Text('type1'),
-                  Text('type2'),
-                ]
+                children: poke.types!.map((String e) => Expanded(child: TypeBadge(e))).toList()
               ),
               trailing: Container(
                 decoration: const BoxDecoration(
