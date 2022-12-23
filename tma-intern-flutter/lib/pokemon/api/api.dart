@@ -1,0 +1,1 @@
+export 'package:flutterproject/pokemon/api/api_pokemon.dart';
