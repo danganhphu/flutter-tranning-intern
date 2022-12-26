@@ -7,7 +7,7 @@ import '../models/pokemon.dart';
 
 class PokemonApi {
   static const _BASE_URL = 'https://pokeapi.co/api/v2';
-  String url = '${_BASE_URL}/pokemon?limit=100&offset=0';
+  String url = '${_BASE_URL}/pokemon?limit=30&offset=0';
 
   Future<List<Pokemon>> getAllPokemon() async {
 
@@ -21,8 +21,8 @@ class PokemonApi {
 
         for (var item in json['results']) {
           if (item['url'] != null) {
+            print(item['url']);
             final pokemon = await getPokemon(item['url']);
-
             final colors = await Future.wait(pokemons.map(
                     (Pokemon e) async => await getImagePalette(NetworkImage(e.urlImage!))
             ));
