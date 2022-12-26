@@ -14,6 +14,13 @@ class UserList extends StatefulWidget{
 
 class _UserListState extends State<UserList> {
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var bloc = Provider.of<UserBloc>(context);
+    bloc.initData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 650,
@@ -71,5 +78,12 @@ class _UserListState extends State<UserList> {
         }
     ),
   );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    var bloc = Provider.of<UserBloc>(context);
+    bloc.dispose();
   }
 }
