@@ -9,7 +9,6 @@ class DatabaseHelper {
   factory DatabaseHelper() {
     return _instance;
   }
-
   DatabaseHelper._internal();
 
   static Database? _db;
@@ -21,22 +20,22 @@ class DatabaseHelper {
   initDb() async {
     String databasePath = await getDatabasesPath();
     String path = join(databasePath, Constant.dbName);
-    _db= await openDatabase(
+    _db = await openDatabase(
         path,
-        version: 1,
+        version: Constant.dbVersion,
         onCreate: (db, version) {
           querys.forEach((query) async => await db.execute(query));
         }
     );
   }
-  final String columnId = "id";
-  final String columnName = "name";
-
-  void _onCreate(Database db, int newVersion) async {
-    await db.execute("crate table ${Constant.tableName} ("
-        "$columnId integer primary key autoincrement,"
-        "$columnName text, "
-        ")");
-  }
+  // final String columnId = "id";
+  // final String columnName = "name";
+  //
+  // void _onCreate(Database db, int newVersion) async {
+  //   await db.execute("crate table ${Constant.tableName} ("
+  //       "$columnId integer primary key autoincrement,"
+  //       "$columnName text, "
+  //       ")");
+  // }
 
 }
