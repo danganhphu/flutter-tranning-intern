@@ -17,13 +17,15 @@ class DatabaseTable {
   ''';
 
   Future<int> insertUser(User user) async {
-    final Database? dbClient = DatabaseHelper().database;
+    var dbClient = DatabaseHelper().database;
+    // final Database? dbClient = DatabaseHelper().database;
     return dbClient!.insert(
         Constant.tableName, user.toJson(), conflictAlgorithm: ConflictAlgorithm.replace
     );
   }
   Future<void> deleteUser(User user) async {
-    final Database? dbClient = DatabaseHelper().database;
+    // final Database? dbClient = DatabaseHelper().database;
+    var dbClient = DatabaseHelper().database;
     await dbClient!.delete(
       Constant.tableName,
       where: 'id = ?',
@@ -31,7 +33,8 @@ class DatabaseTable {
     );
   }
   Future<List<User>> selectAllUsers() async {
-    final Database? dbClient = DatabaseHelper().database;
+    // final Database? dbClient = DatabaseHelper().database;
+    var dbClient = DatabaseHelper().database;
     final List<Map<String, dynamic>> maps = await dbClient!.query(Constant.tableName);
     return List.generate(maps.length, (index) {
       return User(
