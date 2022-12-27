@@ -1,0 +1,1 @@
+export 'package:flutterproject/pokemon_app/screens/pokemon_list_page.dart';
