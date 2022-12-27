@@ -1,0 +1,1 @@
+export 'package:flutterproject/pokemon_app/widgets/pokemon_title.dart';
