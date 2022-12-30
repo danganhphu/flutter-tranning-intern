@@ -29,6 +29,7 @@ class PokemonTile extends StatelessWidget {
           ),
         ),
         onTap: () {
+          print(pokemon.name);
         },
         title: Container(
           margin: const EdgeInsets.fromLTRB(8.0, 0, 11.0, 0),

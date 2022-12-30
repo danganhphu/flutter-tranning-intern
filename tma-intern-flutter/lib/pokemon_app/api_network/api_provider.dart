@@ -16,7 +16,7 @@ class ApiPokemonProvider with ChangeNotifier {
     getPokemonList();
   }
 
-  getPokemonList() async {
+  Future<void> getPokemonList() async {
     try {
       fetching = true;
       notifyListeners();
