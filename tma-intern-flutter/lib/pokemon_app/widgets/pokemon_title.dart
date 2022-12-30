@@ -36,11 +36,13 @@ class PokemonTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                titleText,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(0XFF393E46),
+              Expanded(
+                child: Text(
+                  titleText,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color(0XFF393E46),
+                  ),
                 ),
               ),
               Row(
