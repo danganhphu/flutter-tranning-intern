@@ -20,11 +20,8 @@ class _PokemonListPageState extends State<PokemonListPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      ApiPokemonProvider apiProvider =
-      Provider.of<ApiPokemonProvider>(context, listen: false);
+      ApiPokemonProvider apiProvider = Provider.of<ApiPokemonProvider>(context, listen: false);
       _scrollController = ScrollController();
-      //const int offset = 0;
       _scrollController.addListener(() async {
         final ScrollPosition scrollPosition = _scrollController.position;
         if (!loading &&
@@ -34,7 +31,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
           loading = false;
         }
       });
-    });
   }
 
   @override
@@ -157,8 +153,11 @@ class _PokemonListPageState extends State<PokemonListPage> {
       controller: _scrollController,
       itemCount: apiProvider.displayedPokemon.length + 1,
       itemBuilder: (context, index) {
+        print('index la: $index');
         final itemCount = apiProvider.displayedPokemon.length;
+        print('count la: $itemCount');
         if (index < itemCount) {
+          //print('index la: $index');
           final pokemon = apiProvider.displayedPokemon[index];
           return PokemonTile(index: index, pokemon: pokemon);
         } else {
