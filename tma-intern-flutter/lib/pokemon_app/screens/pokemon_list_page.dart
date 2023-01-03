@@ -153,11 +153,8 @@ class _PokemonListPageState extends State<PokemonListPage> {
       controller: _scrollController,
       itemCount: apiProvider.displayedPokemon.length + 1,
       itemBuilder: (context, index) {
-        print('index la: $index');
         final itemCount = apiProvider.displayedPokemon.length;
-        print('count la: $itemCount');
         if (index < itemCount) {
-          //print('index la: $index');
           final pokemon = apiProvider.displayedPokemon[index];
           return PokemonTile(index: index, pokemon: pokemon);
         } else {
